@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Shalom Salaam | $SALAM</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --iran-green: #239f40;
+    --iran-red: #da0000;
+    --israel-blue: #0038b8;
+    --gold: #f5c518;
+    --cream: #fdf6e3;
+    --dark: #111;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--dark); font-family: 'Nunito', sans-serif; color: white; overflow-x: hidden; }
+
+.ticker { background: var(–gold); color: var(–dark); padding: 0.6rem 0; overflow: hidden; white-space: nowrap; font-family: ‘Bebas Neue’, sans-serif; font-size: 1rem; letter-spacing: 0.2em; }
+.ticker-inner { display: inline-block; animation: ticker 18s linear infinite; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-sep { margin: 0 1.5rem; }
+
+.hero {
+min-height: 100vh;
+display: flex; flex-direction: column; align-items: center; justify-content: center;
+padding: 3rem 1.5rem; position: relative; overflow: hidden;
+background: radial-gradient(ellipse at 20% 60%, rgba(35,159,64,0.35) 0%, transparent 45%),
+radial-gradient(ellipse at 20% 60%, rgba(218,0,0,0.2) 0%, transparent 30%),
+radial-gradient(ellipse at 80% 60%, rgba(0,56,184,0.35) 0%, transparent 45%),
+radial-gradient(ellipse at 80% 60%, rgba(255,255,255,0.08) 0%, transparent 25%),
+#111;
+}
+
+.hero-bg-text {
+position: absolute; font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(100px, 20vw, 300px); color: rgba(255,255,255,0.03);
+user-select: none; white-space: nowrap; pointer-events: none; z-index: 0;
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+.title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(60px, 11vw, 150px); line-height: 0.9; text-align: center; z-index: 1; animation: fadeUp 0.8s ease both; }
+.title .bros { color: white; }
+.title .not { color: var(–gold); font-size: 0.4em; letter-spacing: 0.1em; display: block; }
+.title .bombs { color: white; }
+
+.bros-wrapper {
+display: flex; align-items: flex-end; justify-content: center;
+gap: 0; margin: 2rem 0 1rem; z-index: 1;
+animation: fadeUp 1s ease 0.2s both; position: relative;
+}
+
+.bro { display: flex; flex-direction: column; align-items: center; width: clamp(120px, 20vw, 190px); position: relative; }
+.bro-iran { transform: translateX(16px); }
+.bro-israel { transform: translateX(-16px); }
+.bro-body { width: 100%; }
+
+.flag-badge {
+position: absolute; top: -10px; font-size: clamp(44px, 8vw, 72px);
+filter: drop-shadow(0 6px 14px rgba(0,0,0,0.6)); animation: float 5s ease-in-out infinite;
+}
+.bro-iran .flag-badge { left: 4px; }
+.bro-israel .flag-badge { right: 4px; animation-delay: 0.4s; }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.handshake-zone {
+position: absolute; bottom: clamp(55px, 11vw, 95px); left: 50%; transform: translateX(-50%);
+font-size: clamp(2rem, 4vw, 3rem); filter: drop-shadow(0 0 20px var(–gold));
+animation: pulse 2s ease-in-out infinite; z-index: 10;
+}
+@keyframes pulse { 0%, 100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.2); } }
+
+.token-badge {
+background: var(–gold); color: var(–dark); font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(1.6rem, 3.5vw, 2.6rem); letter-spacing: 0.1em;
+padding: 0.5rem 2.2rem; border-radius: 100px; margin: 1.2rem 0; z-index: 1;
+animation: fadeUp 1s ease 0.5s both; box-shadow: 0 0 40px rgba(245,197,24,0.4);
+}
+
+.tagline { font-size: clamp(0.95rem, 2vw, 1.2rem); font-weight: 700; text-align: center; color: rgba(255,255,255,0.65); max-width: 480px; line-height: 1.6; z-index: 1; animation: fadeUp 1s ease 0.6s both; }
+.tagline em { color: var(–gold); font-style: normal; }
+
+.cta-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; z-index: 1; animation: fadeUp 1s ease 0.8s both; margin-top: 1.5rem; }
+
+.btn { font-family: ‘Nunito’, sans-serif; font-weight: 900; font-size: 1rem; padding: 0.85rem 2.2rem; border-radius: 100px; cursor: pointer; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; display: inline-block; border: none; }
+.btn-gold { background: var(–gold); color: var(–dark); box-shadow: 0 0 30px rgba(245,197,24,0.4); }
+.btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.25); }
+.btn:hover { transform: translateY(-3px); }
+
+.stats-bar { display: flex; justify-content: center; flex-wrap: wrap; background: rgba(255,255,255,0.04); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
+.stat { padding: 1.5rem 2.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); flex: 1; min-width: 140px; }
+.stat:last-child { border-right: none; }
+.stat-num { font-family: ‘Bebas Neue’, sans-serif; font-size: 2rem; color: var(–gold); display: block; }
+.stat-label { font-size: 0.7rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.35); text-transform: uppercase; font-weight: 700; }
+
+.split { display: grid; grid-template-columns: 1fr 1fr; border-radius: 20px; overflow: hidden; margin: 4rem auto; max-width: 1100px; border: 3px solid var(–gold); box-shadow: -8px 0 40px rgba(35,159,64,0.3), 8px 0 40px rgba(0,56,184,0.3); }
+@media (max-width: 580px) { .split { grid-template-columns: 1fr; } }
+.split-side { padding: 3rem 2.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.split-iran {
+background: linear-gradient(160deg, #1a6e2a 0%, #239f40 40%, #c8102e 100%);
+border-right: 3px solid var(–gold);
+}
+.split-iran::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: linear-gradient(to bottom, rgba(255,255,255,0.08) 33%, transparent 33%, transparent 66%, rgba(218,0,0,0.25) 66%);
+pointer-events: none;
+}
+.split-israel {
+background: linear-gradient(160deg, #0038b8 0%, #1a5fd4 50%, #e8eeff 100%);
+}
+.split-israel::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: linear-gradient(to bottom, rgba(255,255,255,0.15) 20%, transparent 20%, transparent 80%, rgba(255,255,255,0.15) 80%);
+pointer-events: none;
+}
+.split-side .flag { font-size: 3.5rem; margin-bottom: 1rem; display: block; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); position: relative; z-index: 1; }
+.split-side h3 { font-family: ‘Bebas Neue’, sans-serif; font-size: 2.2rem; letter-spacing: 0.05em; margin-bottom: 0.75rem; text-shadow: 0 2px 8px rgba(0,0,0,0.5); position: relative; z-index: 1; }
+.split-side p { font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.85); text-shadow: 0 1px 4px rgba(0,0,0,0.5); position: relative; z-index: 1; }
+
+.section { max-width: 1100px; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 1.5rem; }
+.section-dark { background: #0a0a0a; }
+.section-dark-wrap { background: #0a0a0a; }
+.section-label { font-family: ‘Bebas Neue’, sans-serif; font-size: 0.75rem; letter-spacing: 0.4em; color: var(–gold); text-transform: uppercase; margin-bottom: 1rem; display: block; }
+h2 { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(38px, 7vw, 78px); line-height: 1; margin-bottom: 2.5rem; }
+
+.token-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.token-card { border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; background: rgba(255,255,255,0.03); transition: border-color 0.3s, transform 0.3s; text-align: center; }
+.token-card:hover { border-color: var(–gold); transform: translateY(-5px); }
+.token-card .icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.token-card h3 { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.5rem; color: var(–gold); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+.token-card p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+.buy-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; counter-reset: steps; }
+.buy-step { counter-increment: steps; position: relative; padding: 2rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; }
+.buy-step::before { content: counter(steps); font-family: ‘Bebas Neue’, sans-serif; font-size: 4rem; color: rgba(245,197,24,0.12); position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
+.buy-step h4 { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.3rem; color: var(–gold); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+.buy-step p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+.contract-box { background: rgba(245,197,24,0.08); border: 1px solid rgba(245,197,24,0.3); border-radius: 12px; padding: 1.25rem 2rem; font-family: monospace; font-size: clamp(0.65rem, 1.3vw, 0.9rem); color: var(–gold); text-align: center; word-break: break-all; margin-bottom: 3rem; cursor: pointer; transition: background 0.2s; }
+.contract-box:hover { background: rgba(245,197,24,0.15); }
+.contract-label { font-size: 0.7rem; letter-spacing: 0.3em; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 0.5rem; font-family: ‘Nunito’, sans-serif; }
+
+footer { border-top: 1px solid rgba(255,255,255,0.05); text-align: center; padding: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; background: #000; }
+footer .logo-foot { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.8rem; color: var(–gold); margin-bottom: 0.5rem; display: block; letter-spacing: 0.1em; }
+
+.community { text-align: center; padding: 4rem 1.5rem 7rem; background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.06); }
+</style>
+
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    🇮🇷 SHALOM SALAAM <span class="ticker-sep">★</span> $SALAM TO THE MOON <span class="ticker-sep">★</span> 🇮🇱 PEACE IS BULLISH <span class="ticker-sep">★</span> MEME COIN FOR WORLD PEACE <span class="ticker-sep">★</span> SHALOM <span class="ticker-sep">★</span> SALAAM <span class="ticker-sep">★</span> ☮️ FAIR LAUNCH ON PUMP.FUN <span class="ticker-sep">★</span>
+    🇮🇷 SHALOM SALAAM <span class="ticker-sep">★</span> $SALAM TO THE MOON <span class="ticker-sep">★</span> 🇮🇱 PEACE IS BULLISH <span class="ticker-sep">★</span> MEME COIN FOR WORLD PEACE <span class="ticker-sep">★</span> SHALOM <span class="ticker-sep">★</span> SALAAM <span class="ticker-sep">★</span> ☮️ FAIR LAUNCH ON PUMP.FUN <span class="ticker-sep">★</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-bg-text">SHALOM</div>
+
+  <div class="title">
+    <span class="bros">Shalom</span>
+    <span class="not">×</span>
+    <span class="bombs">Salaam</span>
+  </div>
+
+  <!-- SVG BROS -->
+
+  <div class="bros-wrapper">
+    <!-- IRAN BRO -->
+    <div class="bro bro-iran">
+      <span class="flag-badge">🇮🇷</span>
+      <svg class="bro-body" viewBox="0 0 140 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Keffiyeh top -->
+        <ellipse cx="70" cy="36" rx="33" ry="34" fill="#1c1c1c"/>
+        <!-- Keffiyeh pattern hint -->
+        <path d="M40 55 Q28 82 34 100 Q40 72 62 74 Z" fill="#2a2a2a"/>
+        <!-- Face -->
+        <ellipse cx="70" cy="42" rx="26" ry="27" fill="#8a6040"/>
+        <!-- Beard -->
+        <ellipse cx="70" cy="62" rx="21" ry="14" fill="#0d0d0d"/>
+        <ellipse cx="70" cy="52" rx="19" ry="11" fill="#8a6040"/>
+        <!-- Eyes -->
+        <ellipse cx="62" cy="39" rx="3" ry="3.5" fill="#111"/>
+        <ellipse cx="78" cy="39" rx="3" ry="3.5" fill="#111"/>
+        <!-- Smile -->
+        <path d="M62 55 Q70 63 78 55" stroke="#c09070" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Neck -->
+        <rect x="62" y="70" width="16" height="22" rx="4" fill="#8a6040"/>
+        <!-- Body green shirt -->
+        <rect x="36" y="88" width="68" height="82" rx="10" fill="#1d6b30"/>
+        <!-- Iran flag patch on chest -->
+        <rect x="78" y="100" width="20" height="13" rx="2" fill="#239f40"/>
+        <rect x="78" y="103.5" width="20" height="6" fill="white"/>
+        <rect x="78" y="110" width="20" height="3" fill="#da0000"/>
+        <!-- Left arm (toward center) -->
+        <rect x="100" y="90" width="24" height="62" rx="12" fill="#1d6b30"/>
+        <!-- Right arm (out) -->
+        <rect x="14" y="90" width="24" height="62" rx="12" fill="#1d6b30"/>
+        <!-- Hands -->
+        <ellipse cx="26" cy="155" rx="11" ry="9" fill="#8a6040"/>
+        <ellipse cx="112" cy="155" rx="11" ry="9" fill="#8a6040"/>
+        <!-- Pants dark -->
+        <rect x="36" y="167" width="30" height="82" rx="7" fill="#3a2800"/>
+        <rect x="72" y="167" width="30" height="82" rx="7" fill="#2e2000"/>
+        <!-- Shoes -->
+        <ellipse cx="51" cy="249" rx="19" ry="8" fill="#1a1a1a"/>
+        <ellipse cx="87" cy="249" rx="19" ry="8" fill="#1a1a1a"/>
+      </svg>
+    </div>
+
+```
+<div class="handshake-zone">🤝</div>
+
+<!-- ISRAEL BRO -->
+<div class="bro bro-israel">
+  <span class="flag-badge">🇮🇱</span>
+  <svg class="bro-body" viewBox="0 0 140 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Kippah -->
+    <ellipse cx="70" cy="16" rx="27" ry="13" fill="#111"/>
+    <!-- White/grey hair -->
+    <ellipse cx="70" cy="30" rx="30" ry="20" fill="#d8d0c0"/>
+    <!-- Face older/lighter -->
+    <ellipse cx="70" cy="46" rx="26" ry="27" fill="#c4a07a"/>
+    <!-- White beard -->
+    <ellipse cx="70" cy="65" rx="22" ry="15" fill="#d8d8d8"/>
+    <ellipse cx="70" cy="53" rx="20" ry="13" fill="#c4a07a"/>
+    <!-- Eyes -->
+    <ellipse cx="62" cy="42" rx="3" ry="3" fill="#444"/>
+    <ellipse cx="78" cy="42" rx="3" ry="3" fill="#444"/>
+    <!-- Wrinkles -->
+    <path d="M57 38 Q55 41 57 43" stroke="#a07050" stroke-width="1.2" fill="none"/>
+    <path d="M83 38 Q85 41 83 43" stroke="#a07050" stroke-width="1.2" fill="none"/>
+    <!-- Smile -->
+    <path d="M63 58 Q70 65 77 58" stroke="#9a7050" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Neck -->
+    <rect x="62" y="74" width="16" height="20" rx="4" fill="#c4a07a"/>
+    <!-- Tallit white shawl -->
+    <rect x="30" y="88" width="80" height="92" rx="6" fill="white" opacity="0.12"/>
+    <!-- Blue shirt -->
+    <rect x="38" y="90" width="64" height="80" rx="10" fill="#0038b8"/>
+    <!-- Tallit blue stripes -->
+    <rect x="30" y="90" width="8" height="90" rx="3" fill="#0038b8" opacity="0.7"/>
+    <rect x="102" y="90" width="8" height="90" rx="3" fill="#0038b8" opacity="0.7"/>
+    <!-- Star of David -->
+    <text x="60" y="130" font-size="18" fill="#f5c518">✡</text>
+    <!-- Right arm toward center -->
+    <rect x="16" y="90" width="24" height="62" rx="12" fill="#0038b8"/>
+    <!-- Left arm out -->
+    <rect x="100" y="90" width="24" height="62" rx="12" fill="#0038b8"/>
+    <!-- Hands -->
+    <ellipse cx="28" cy="155" rx="11" ry="9" fill="#c4a07a"/>
+    <ellipse cx="112" cy="155" rx="11" ry="9" fill="#c4a07a"/>
+    <!-- Pants -->
+    <rect x="38" y="167" width="28" height="82" rx="7" fill="#504030"/>
+    <rect x="72" y="167" width="28" height="82" rx="7" fill="#403020"/>
+    <!-- Shoes -->
+    <ellipse cx="52" cy="249" rx="19" ry="8" fill="#1a1a1a"/>
+    <ellipse cx="86" cy="249" rx="19" ry="8" fill="#1a1a1a"/>
+  </svg>
+</div>
+```
+
+  </div>
+
+  <div class="token-badge">$SALAM — Shalom Salaam</div>
+  <p class="tagline">The <em>most peaceful</em> meme coin in the Middle East. When Shalom meets Salaam and the vibe is immaculate — that's <em>alpha</em>.</p>
+  <div class="cta-group">
+    <a href="https://join.pump.fun/HSag/7meeq2ak" target="_blank" class="btn btn-gold">🚀 Buy $SALAM</a>
+    <a href="#buy" class="btn btn-outline">📊 How to Buy</a>
+  </div>
+</section>
+
+<!-- SPLIT -->
+
+<div class="split" style="margin: 4rem auto; padding: 0 1.5rem; max-width: 1100px; padding:0;">
+  <div style="max-width:1100px; margin: 0 auto; width:100%; display:grid; grid-template-columns:1fr 1fr; border-radius:20px; overflow:hidden;">
+    <div class="split-side split-iran">
+      <span class="flag">🇮🇷</span>
+      <h3>Iranian Fren</h3>
+      <p>Young. Gassed up. Ready to dump bags of peace on the market. Holding $SALAM since the pre-sale of humanity. Diamond hands wrapped in a keffiyeh.</p>
+    </div>
+    <div class="split-side split-israel">
+      <span class="flag">🇮🇱</span>
+      <h3>Israeli Fren</h3>
+      <p>Old school. Wise. Been through the bear market of history. Still bullish on the human race. Staked his whole portfolio on brotherhood.</p>
+    </div>
+  </div>
+</div>
+
+<!-- HOW TO BUY -->
+
+<div style="background:#0a0a0a;">
+<div id="buy" class="section" style="padding-top:3rem;">
+  <span class="section-label">Let's Go</span>
+  <h2>How to Buy $SALAM</h2>
+  <div class="contract-label">Contract Address — Click to Copy</div>
+  <div class="contract-box" onclick="copyContract(this)" id="ca-box">
+    BSZ1TzeZJfs5GJXKFtFUvoS6XTpTz2EzqCuJftmpump
+    <div style="font-size:0.65rem; margin-top:0.4rem; opacity:0.5; font-family:'Nunito',sans-serif;">Click to copy • Fair launch on pump.fun</div>
+  </div>
+  <div style="text-align:center; margin-bottom: 3rem;">
+    <a href="https://join.pump.fun/HSag/7meeq2ak" target="_blank" class="btn btn-gold" style="font-size:1.2rem; padding: 1rem 3rem; box-shadow: 0 0 50px rgba(245,197,24,0.6);">🚀 Buy on pump.fun</a>
+  </div>
+  <div class="buy-steps">
+    <div class="buy-step"><h4>Get a Wallet</h4><p>Download Phantom or MetaMask. Store your keys, store your peace.</p></div>
+    <div class="buy-step"><h4>Buy SOL / ETH</h4><p>Grab some SOL or ETH from any exchange. You know the drill, anon.</p></div>
+    <div class="buy-step"><h4>Swap on DEX</h4><p>Head to Raydium or Uniswap. Paste the $SALAM contract and swap.</p></div>
+    <div class="buy-step"><h4>Hold & Vibe</h4><p>Set slippage to 5%. Hit confirm. Welcome to the most peaceful wallet in crypto.</p></div>
+  </div>
+</div>
+</div>
+
+<!-- COMMUNITY -->
+
+<div class="community">
+  <span class="section-label" style="display:block;text-align:center;">Community</span>
+  <h2 style="font-size:clamp(36px,7vw,80px);margin-bottom:1rem;">Join the Community</h2>
+  <p style="color:rgba(255,255,255,0.5);max-width:400px;margin:0 auto 2.5rem;line-height:1.7;font-size:1.05rem;">The most peaceful community in all of crypto. Shalom. Salaam. Let's go.</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <a href="https://join.pump.fun/HSag/7meeq2ak" target="_blank" class="btn btn-gold">🚀 Buy on pump.fun</a>
+    <a href="https://join.pump.fun/HSag/7meeq2ak" target="_blank" class="btn btn-outline">📈 Chart</a>
+  </div>
+</div>
+
+<footer>
+  <span class="logo-foot">Shalom Salaam ☮️</span>
+  <p>$SALAM is a meme coin with no intrinsic value or expectation of financial return.</p>
+  <p style="margin-top:0.5rem;">For entertainment purposes only. Always DYOR. Not financial advice.</p>
+  <p style="margin-top:1rem;color:rgba(255,255,255,0.15);">🇮🇷 × 🇮🇱 — Peace is the only rug pull we believe in.</p>
+</footer>
+
+<script>
+  function copyContract(el) {
+    navigator.clipboard.writeText('BSZ1TzeZJfs5GJXKFtFUvoS6XTpTz2EzqCuJftmpump').catch(() => {});
+    el.style.background = 'rgba(245,197,24,0.25)';
+    const sub = el.querySelector('div');
+    const orig = sub.textContent;
+    sub.textContent = '✅ Copied to clipboard!';
+    setTimeout(() => { el.style.background = ''; sub.textContent = orig; }, 1500);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { e.target.style.animation = `fadeUp 0.6s ease ${i * 0.1}s both`; observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.token-card, .buy-step').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
