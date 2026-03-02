@@ -4,368 +4,788 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Shalom Salaam | $SALAM</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<title>Shalom Salaam | $SALAM</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Taviraj:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --iran-green: #239f40;
-    --iran-red: #da0000;
-    --israel-blue: #0038b8;
-    --gold: #f5c518;
-    --cream: #fdf6e3;
-    --dark: #111;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--dark); font-family: 'Nunito', sans-serif; color: white; overflow-x: hidden; }
+:root {
+  --gold: #c9a84c;
+  --gold-light: #f0d080;
+  --iran-green: #239f40;
+  --iran-red: #c8102e;
+  --israel-blue: #0038b8;
+  --deep: #0a0a0f;
+  --surface: #111118;
+}
 
-.ticker { background: var(–gold); color: var(–dark); padding: 0.6rem 0; overflow: hidden; white-space: nowrap; font-family: ‘Bebas Neue’, sans-serif; font-size: 1rem; letter-spacing: 0.2em; }
-.ticker-inner { display: inline-block; animation: ticker 18s linear infinite; }
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–deep);
+color: white;
+font-family: ‘Taviraj’, serif;
+overflow-x: hidden;
+cursor: none;
+}
+
+/* CUSTOM CURSOR */
+.cursor {
+width: 12px; height: 12px;
+background: var(–gold);
+border-radius: 50%;
+position: fixed;
+pointer-events: none;
+z-index: 99999;
+transition: transform 0.15s ease;
+mix-blend-mode: difference;
+}
+
+/* PERSIAN GEOMETRIC PATTERN SVG BG */
+.pattern-bg {
+position: fixed;
+inset: 0;
+opacity: 0.04;
+background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘100’ height=‘100’%3E%3Cpath d=‘M50 0 L100 50 L50 100 L0 50Z’ fill=‘none’ stroke=’%23c9a84c’ stroke-width=‘1’/%3E%3Cpath d=‘M50 15 L85 50 L50 85 L15 50Z’ fill=‘none’ stroke=’%23c9a84c’ stroke-width=‘0.5’/%3E%3Cpath d=‘M50 0 L50 100M0 50 L100 50’ stroke=’%23c9a84c’ stroke-width=‘0.3’/%3E%3Ccircle cx=‘50’ cy=‘50’ r=‘20’ fill=‘none’ stroke=’%23c9a84c’ stroke-width=‘0.5’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 0;
+}
+
+/* TICKER */
+.ticker {
+position: relative; z-index: 10;
+background: linear-gradient(90deg, var(–iran-green), #1a7a30, var(–iran-green));
+padding: 0.55rem 0;
+overflow: hidden;
+white-space: nowrap;
+font-family: ‘Cinzel Decorative’, serif;
+font-size: 0.7rem;
+letter-spacing: 0.3em;
+border-bottom: 1px solid rgba(201,168,76,0.3);
+}
+.ticker-inner { display: inline-block; animation: ticker 22s linear infinite; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.ticker-sep { margin: 0 1.5rem; }
+.ticker-sep { color: var(–gold); margin: 0 2rem; }
 
+/* ============ HERO ============ */
 .hero {
 min-height: 100vh;
-display: flex; flex-direction: column; align-items: center; justify-content: center;
-padding: 3rem 1.5rem; position: relative; overflow: hidden;
-background: radial-gradient(ellipse at 20% 60%, rgba(35,159,64,0.35) 0%, transparent 45%),
-radial-gradient(ellipse at 20% 60%, rgba(218,0,0,0.2) 0%, transparent 30%),
-radial-gradient(ellipse at 80% 60%, rgba(0,56,184,0.35) 0%, transparent 45%),
-radial-gradient(ellipse at 80% 60%, rgba(255,255,255,0.08) 0%, transparent 25%),
-#111;
+display: grid;
+grid-template-columns: 1fr 1fr;
+position: relative;
+overflow: hidden;
+z-index: 1;
 }
 
-.hero-bg-text {
-position: absolute; font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(100px, 20vw, 300px); color: rgba(255,255,255,0.03);
-user-select: none; white-space: nowrap; pointer-events: none; z-index: 0;
+/* Left - Iran green side */
+.hero-left {
+background: linear-gradient(160deg, #0a2e14 0%, #0f4a20 40%, #0d3318 100%);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-end;
+padding: 5rem 3rem 5rem 4rem;
+position: relative;
+overflow: hidden;
 }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-.title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(60px, 11vw, 150px); line-height: 0.9; text-align: center; z-index: 1; animation: fadeUp 0.8s ease both; }
-.title .bros { color: white; }
-.title .not { color: var(–gold); font-size: 0.4em; letter-spacing: 0.1em; display: block; }
-.title .bombs { color: white; }
-
-.bros-wrapper {
-display: flex; align-items: flex-end; justify-content: center;
-gap: 0; margin: 2rem 0 1rem; z-index: 1;
-animation: fadeUp 1s ease 0.2s both; position: relative;
-}
-
-.bro { display: flex; flex-direction: column; align-items: center; width: clamp(120px, 20vw, 190px); position: relative; }
-.bro-iran { transform: translateX(16px); }
-.bro-israel { transform: translateX(-16px); }
-.bro-body { width: 100%; }
-
-.flag-badge {
-position: absolute; top: -10px; font-size: clamp(44px, 8vw, 72px);
-filter: drop-shadow(0 6px 14px rgba(0,0,0,0.6)); animation: float 5s ease-in-out infinite;
-}
-.bro-iran .flag-badge { left: 4px; }
-.bro-israel .flag-badge { right: 4px; animation-delay: 0.4s; }
-
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-
-.handshake-zone {
-position: absolute; bottom: clamp(55px, 11vw, 95px); left: 50%; transform: translateX(-50%);
-font-size: clamp(2rem, 4vw, 3rem); filter: drop-shadow(0 0 20px var(–gold));
-animation: pulse 2s ease-in-out infinite; z-index: 10;
-}
-@keyframes pulse { 0%, 100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.2); } }
-
-.token-badge {
-background: var(–gold); color: var(–dark); font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(1.6rem, 3.5vw, 2.6rem); letter-spacing: 0.1em;
-padding: 0.5rem 2.2rem; border-radius: 100px; margin: 1.2rem 0; z-index: 1;
-animation: fadeUp 1s ease 0.5s both; box-shadow: 0 0 40px rgba(245,197,24,0.4);
-}
-
-.tagline { font-size: clamp(0.95rem, 2vw, 1.2rem); font-weight: 700; text-align: center; color: rgba(255,255,255,0.65); max-width: 480px; line-height: 1.6; z-index: 1; animation: fadeUp 1s ease 0.6s both; }
-.tagline em { color: var(–gold); font-style: normal; }
-
-.cta-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; z-index: 1; animation: fadeUp 1s ease 0.8s both; margin-top: 1.5rem; }
-
-.btn { font-family: ‘Nunito’, sans-serif; font-weight: 900; font-size: 1rem; padding: 0.85rem 2.2rem; border-radius: 100px; cursor: pointer; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; display: inline-block; border: none; }
-.btn-gold { background: var(–gold); color: var(–dark); box-shadow: 0 0 30px rgba(245,197,24,0.4); }
-.btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.25); }
-.btn:hover { transform: translateY(-3px); }
-
-.stats-bar { display: flex; justify-content: center; flex-wrap: wrap; background: rgba(255,255,255,0.04); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
-.stat { padding: 1.5rem 2.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); flex: 1; min-width: 140px; }
-.stat:last-child { border-right: none; }
-.stat-num { font-family: ‘Bebas Neue’, sans-serif; font-size: 2rem; color: var(–gold); display: block; }
-.stat-label { font-size: 0.7rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.35); text-transform: uppercase; font-weight: 700; }
-
-.split { display: grid; grid-template-columns: 1fr 1fr; border-radius: 20px; overflow: hidden; margin: 4rem auto; max-width: 1100px; border: 3px solid var(–gold); box-shadow: -8px 0 40px rgba(35,159,64,0.3), 8px 0 40px rgba(0,56,184,0.3); }
-@media (max-width: 580px) { .split { grid-template-columns: 1fr; } }
-.split-side { padding: 3rem 2.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
-.split-iran {
-background: linear-gradient(160deg, #1a6e2a 0%, #239f40 40%, #c8102e 100%);
-border-right: 3px solid var(–gold);
-}
-.split-iran::before {
+.hero-left::before {
 content: ‘’;
-position: absolute; inset: 0;
-background: linear-gradient(to bottom, rgba(255,255,255,0.08) 33%, transparent 33%, transparent 66%, rgba(218,0,0,0.25) 66%);
+position: absolute;
+top: 0; bottom: 0; right: 0;
+width: 3px;
+background: linear-gradient(to bottom, transparent, var(–gold), transparent);
+}
+
+.hero-left::after {
+content: ‘’;
+position: absolute;
+bottom: -100px; left: -100px;
+width: 400px; height: 400px;
+background: radial-gradient(circle, rgba(35,159,64,0.25) 0%, transparent 70%);
 pointer-events: none;
 }
-.split-israel {
-background: linear-gradient(160deg, #0038b8 0%, #1a5fd4 50%, #e8eeff 100%);
+
+/* Right - Israel blue side */
+.hero-right {
+background: linear-gradient(200deg, #0a102e 0%, #0c1a4a 40%, #091228 100%);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 5rem 4rem 5rem 3rem;
+position: relative;
+overflow: hidden;
 }
-.split-israel::before {
+
+.hero-right::after {
 content: ‘’;
-position: absolute; inset: 0;
-background: linear-gradient(to bottom, rgba(255,255,255,0.15) 20%, transparent 20%, transparent 80%, rgba(255,255,255,0.15) 80%);
+position: absolute;
+top: -100px; right: -100px;
+width: 400px; height: 400px;
+background: radial-gradient(circle, rgba(0,56,184,0.25) 0%, transparent 70%);
 pointer-events: none;
 }
-.split-side .flag { font-size: 3.5rem; margin-bottom: 1rem; display: block; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); position: relative; z-index: 1; }
-.split-side h3 { font-family: ‘Bebas Neue’, sans-serif; font-size: 2.2rem; letter-spacing: 0.05em; margin-bottom: 0.75rem; text-shadow: 0 2px 8px rgba(0,0,0,0.5); position: relative; z-index: 1; }
-.split-side p { font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.85); text-shadow: 0 1px 4px rgba(0,0,0,0.5); position: relative; z-index: 1; }
 
-.section { max-width: 1100px; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 1.5rem; }
-.section-dark { background: #0a0a0a; }
-.section-dark-wrap { background: #0a0a0a; }
-.section-label { font-family: ‘Bebas Neue’, sans-serif; font-size: 0.75rem; letter-spacing: 0.4em; color: var(–gold); text-transform: uppercase; margin-bottom: 1rem; display: block; }
-h2 { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(38px, 7vw, 78px); line-height: 1; margin-bottom: 2.5rem; }
+/* CENTER CHAD */
+.chad-center {
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+z-index: 20;
+width: clamp(280px, 30vw, 420px);
+display: flex;
+flex-direction: column;
+align-items: center;
+}
 
-.token-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-.token-card { border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; background: rgba(255,255,255,0.03); transition: border-color 0.3s, transform 0.3s; text-align: center; }
-.token-card:hover { border-color: var(–gold); transform: translateY(-5px); }
-.token-card .icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
-.token-card h3 { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.5rem; color: var(–gold); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
-.token-card p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.chad-svg {
+width: 100%;
+filter: drop-shadow(0 -20px 60px rgba(201,168,76,0.3));
+animation: heroFloat 7s ease-in-out infinite;
+}
 
-.buy-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; counter-reset: steps; }
-.buy-step { counter-increment: steps; position: relative; padding: 2rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; }
-.buy-step::before { content: counter(steps); font-family: ‘Bebas Neue’, sans-serif; font-size: 4rem; color: rgba(245,197,24,0.12); position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
-.buy-step h4 { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.3rem; color: var(–gold); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
-.buy-step p { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+@keyframes heroFloat {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-16px); }
+}
 
-.contract-box { background: rgba(245,197,24,0.08); border: 1px solid rgba(245,197,24,0.3); border-radius: 12px; padding: 1.25rem 2rem; font-family: monospace; font-size: clamp(0.65rem, 1.3vw, 0.9rem); color: var(–gold); text-align: center; word-break: break-all; margin-bottom: 3rem; cursor: pointer; transition: background 0.2s; }
-.contract-box:hover { background: rgba(245,197,24,0.15); }
-.contract-label { font-size: 0.7rem; letter-spacing: 0.3em; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 0.5rem; font-family: ‘Nunito’, sans-serif; }
+.flag-left {
+position: absolute;
+left: -60px;
+top: 40px;
+font-size: clamp(50px, 6vw, 90px);
+animation: flagFloat 5s ease-in-out infinite;
+filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
+}
 
-footer { border-top: 1px solid rgba(255,255,255,0.05); text-align: center; padding: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.3); letter-spacing: 0.05em; background: #000; }
-footer .logo-foot { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.8rem; color: var(–gold); margin-bottom: 0.5rem; display: block; letter-spacing: 0.1em; }
+.flag-right {
+position: absolute;
+right: -60px;
+top: 40px;
+font-size: clamp(50px, 6vw, 90px);
+animation: flagFloat 5s ease-in-out infinite 0.5s;
+filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
+}
 
-.community { text-align: center; padding: 4rem 1.5rem 7rem; background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.06); }
+@keyframes flagFloat {
+0%, 100% { transform: translateY(0) rotate(-3deg); }
+50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+/* HERO TEXT */
+.hero-word {
+font-family: ‘Cinzel Decorative’, serif;
+font-size: clamp(36px, 5vw, 80px);
+font-weight: 900;
+line-height: 1;
+letter-spacing: 0.05em;
+}
+
+.hero-word-salaam {
+color: var(–iran-green);
+text-shadow: 0 0 60px rgba(35,159,64,0.5), 0 0 120px rgba(35,159,64,0.2);
+text-align: right;
+animation: fadeLeft 1s ease both;
+}
+
+.hero-word-shalom {
+color: #4a7fff;
+text-shadow: 0 0 60px rgba(0,56,184,0.6), 0 0 120px rgba(0,56,184,0.2);
+text-align: left;
+animation: fadeRight 1s ease 0.2s both;
+}
+
+@keyframes fadeLeft {
+from { opacity: 0; transform: translateX(-40px); }
+to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeRight {
+from { opacity: 0; transform: translateX(40px); }
+to { opacity: 1; transform: translateX(0); }
+}
+
+.hero-sub {
+font-size: clamp(0.75rem, 1.2vw, 1rem);
+letter-spacing: 0.25em;
+text-transform: uppercase;
+margin-top: 0.5rem;
+opacity: 0.5;
+font-weight: 300;
+}
+
+.hero-sub-left { text-align: right; animation: fadeLeft 1s ease 0.3s both; }
+.hero-sub-right { text-align: left; animation: fadeRight 1s ease 0.5s both; }
+
+.hero-divider {
+width: 60px; height: 2px;
+background: var(–gold);
+margin: 1.5rem 0;
+opacity: 0.6;
+}
+.hero-divider-right { margin-left: 0; animation: fadeRight 1s ease 0.6s both; }
+.hero-divider-left { margin-left: auto; animation: fadeLeft 1s ease 0.4s both; }
+
+.hero-desc {
+font-size: clamp(0.85rem, 1.1vw, 1rem);
+line-height: 1.8;
+color: rgba(255,255,255,0.5);
+font-weight: 300;
+max-width: 280px;
+}
+.hero-desc-left { text-align: right; margin-left: auto; animation: fadeLeft 1s ease 0.5s both; }
+.hero-desc-right { text-align: left; animation: fadeRight 1s ease 0.7s both; }
+
+/* GOLD DIVIDER LINE */
+.gold-bar {
+height: 2px;
+background: linear-gradient(90deg, transparent, var(–gold), var(–gold-light), var(–gold), transparent);
+position: relative; z-index: 5;
+}
+
+/* ============ STORY SECTION ============ */
+.story {
+position: relative; z-index: 1;
+padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
+text-align: center;
+background: var(–surface);
+overflow: hidden;
+}
+
+.story::before {
+content: ‘☮’;
+position: absolute;
+font-size: 40vw;
+color: rgba(201,168,76,0.02);
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+pointer-events: none;
+line-height: 1;
+}
+
+.story-label {
+font-family: ‘Cinzel Decorative’, serif;
+font-size: 0.65rem;
+letter-spacing: 0.5em;
+color: var(–gold);
+text-transform: uppercase;
+display: block;
+margin-bottom: 2rem;
+}
+
+.story h2 {
+font-family: ‘Cinzel Decorative’, serif;
+font-size: clamp(2rem, 5vw, 4.5rem);
+font-weight: 700;
+line-height: 1.15;
+margin-bottom: 3rem;
+background: linear-gradient(135deg, white 30%, var(–gold-light) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.story-body {
+max-width: 640px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+.story-body p {
+font-size: clamp(1rem, 1.5vw, 1.15rem);
+line-height: 1.95;
+color: rgba(255,255,255,0.65);
+font-weight: 300;
+}
+
+.story-body p strong {
+color: white;
+font-weight: 600;
+}
+
+.story-body p em {
+color: var(–gold-light);
+font-style: italic;
+}
+
+/* ============ MEANING CARDS ============ */
+.meaning {
+display: grid;
+grid-template-columns: 1fr 1fr;
+max-width: 900px;
+margin: 0 auto 0;
+border: 1px solid rgba(201,168,76,0.2);
+border-radius: 24px;
+overflow: hidden;
+box-shadow: 0 0 80px rgba(201,168,76,0.06);
+}
+
+@media (max-width: 600px) { .meaning { grid-template-columns: 1fr; } .hero { grid-template-columns: 1fr; min-height: auto; } .chad-center { position: relative; transform: none; left: auto; margin: 0 auto; } .hero-left, .hero-right { align-items: center; padding: 3rem 2rem; } .hero-word-salaam, .hero-desc-left, .hero-sub-left { text-align: center; } .hero-divider-left { margin: 1.5rem auto; } .flag-left, .flag-right { position: static; font-size: 3rem; } }
+
+.meaning-card {
+padding: 3.5rem 3rem;
+position: relative;
+overflow: hidden;
+transition: transform 0.4s ease;
+}
+
+.meaning-card:hover { transform: scale(1.01); }
+
+.meaning-iran {
+background: linear-gradient(160deg, #0d3318, #0f4a20);
+border-right: 1px solid rgba(201,168,76,0.2);
+}
+
+.meaning-israel {
+background: linear-gradient(200deg, #091228, #0c1a4a);
+}
+
+.meaning-card .flag-big {
+font-size: 4.5rem;
+display: block;
+margin-bottom: 1.5rem;
+filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+}
+
+.meaning-card h3 {
+font-family: ‘Cinzel Decorative’, serif;
+font-size: clamp(1.8rem, 3vw, 2.8rem);
+font-weight: 700;
+margin-bottom: 0.5rem;
+}
+
+.meaning-iran h3 { color: #4ddd70; text-shadow: 0 0 40px rgba(35,159,64,0.5); }
+.meaning-israel h3 { color: #6699ff; text-shadow: 0 0 40px rgba(0,56,184,0.5); }
+
+.meaning-card .word-meaning {
+font-size: 0.8rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.35);
+margin-bottom: 1.5rem;
+display: block;
+}
+
+.meaning-card p {
+font-size: 0.95rem;
+line-height: 1.8;
+color: rgba(255,255,255,0.6);
+font-weight: 300;
+}
+
+/* ============ BUY SECTION ============ */
+.buy-section {
+background: var(–deep);
+padding: clamp(5rem, 10vw, 9rem) 1.5rem;
+text-align: center;
+position: relative;
+z-index: 1;
+overflow: hidden;
+}
+
+.buy-section::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+}
+
+.buy-section::after {
+content: ‘’;
+position: absolute;
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+width: 600px; height: 600px;
+background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
+pointer-events: none;
+}
+
+.buy-label {
+font-family: ‘Cinzel Decorative’, serif;
+font-size: 0.65rem;
+letter-spacing: 0.5em;
+color: var(–gold);
+text-transform: uppercase;
+display: block;
+margin-bottom: 1.5rem;
+}
+
+.buy-section h2 {
+font-family: ‘Cinzel Decorative’, serif;
+font-size: clamp(2rem, 5vw, 4rem);
+font-weight: 700;
+line-height: 1.15;
+margin-bottom: 0.75rem;
+color: white;
+}
+
+.buy-section .fair-note {
+font-size: 0.9rem;
+color: rgba(255,255,255,0.35);
+letter-spacing: 0.1em;
+margin-bottom: 3rem;
+font-style: italic;
+}
+
+.ca-box {
+background: rgba(201,168,76,0.05);
+border: 1px solid rgba(201,168,76,0.25);
+border-radius: 16px;
+padding: 1.5rem 2rem;
+max-width: 600px;
+margin: 0 auto 2.5rem;
+cursor: pointer;
+transition: background 0.2s, border-color 0.2s;
+position: relative; z-index: 1;
+}
+
+.ca-box:hover {
+background: rgba(201,168,76,0.1);
+border-color: rgba(201,168,76,0.5);
+}
+
+.ca-label {
+font-size: 0.65rem;
+letter-spacing: 0.35em;
+color: rgba(255,255,255,0.25);
+text-transform: uppercase;
+margin-bottom: 0.75rem;
+font-family: ‘Taviraj’, serif;
+}
+
+.ca-address {
+font-family: monospace;
+font-size: clamp(0.6rem, 1.2vw, 0.85rem);
+color: var(–gold-light);
+word-break: break-all;
+line-height: 1.6;
+}
+
+.ca-hint {
+font-size: 0.65rem;
+color: rgba(255,255,255,0.2);
+margin-top: 0.5rem;
+font-family: ‘Taviraj’, serif;
+letter-spacing: 0.1em;
+}
+
+.buy-btn {
+display: inline-block;
+background: linear-gradient(135deg, var(–gold) 0%, var(–gold-light) 50%, var(–gold) 100%);
+background-size: 200% auto;
+color: #0a0a0f;
+font-family: ‘Cinzel Decorative’, serif;
+font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+font-weight: 700;
+letter-spacing: 0.1em;
+padding: 1.1rem 3.5rem;
+border-radius: 100px;
+text-decoration: none;
+border: none;
+cursor: none;
+transition: background-position 0.4s, transform 0.2s, box-shadow 0.2s;
+box-shadow: 0 0 40px rgba(201,168,76,0.3), 0 0 80px rgba(201,168,76,0.1);
+position: relative; z-index: 1;
+animation: btnPulse 3s ease-in-out infinite;
+}
+
+@keyframes btnPulse {
+0%, 100% { box-shadow: 0 0 40px rgba(201,168,76,0.3), 0 0 80px rgba(201,168,76,0.1); }
+50% { box-shadow: 0 0 60px rgba(201,168,76,0.5), 0 0 120px rgba(201,168,76,0.2); }
+}
+
+.buy-btn:hover {
+background-position: right center;
+transform: translateY(-3px);
+}
+
+/* ============ FOOTER ============ */
+footer {
+background: var(–surface);
+border-top: 1px solid rgba(201,168,76,0.1);
+text-align: center;
+padding: 3rem 1.5rem;
+position: relative; z-index: 1;
+}
+
+.footer-logo {
+font-family: ‘Cinzel Decorative’, serif;
+font-size: clamp(1.4rem, 3vw, 2.2rem);
+font-weight: 700;
+color: var(–gold);
+display: block;
+margin-bottom: 1rem;
+letter-spacing: 0.05em;
+}
+
+footer p {
+font-size: 0.75rem;
+color: rgba(255,255,255,0.2);
+letter-spacing: 0.1em;
+line-height: 1.8;
+}
+
+.footer-flags {
+font-size: 2rem;
+margin-bottom: 1.5rem;
+display: block;
+}
+
+/* SCROLL REVEAL */
+.reveal {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
 </style>
 
 </head>
 <body>
 
+<div class="cursor" id="cursor"></div>
+<div class="pattern-bg"></div>
+
+<!-- TICKER -->
+
 <div class="ticker">
   <div class="ticker-inner">
-    🇮🇷 SHALOM SALAAM <span class="ticker-sep">★</span> $SALAM TO THE MOON <span class="ticker-sep">★</span> 🇮🇱 PEACE IS BULLISH <span class="ticker-sep">★</span> MEME COIN FOR WORLD PEACE <span class="ticker-sep">★</span> SHALOM <span class="ticker-sep">★</span> SALAAM <span class="ticker-sep">★</span> ☮️ FAIR LAUNCH ON PUMP.FUN <span class="ticker-sep">★</span>
-    🇮🇷 SHALOM SALAAM <span class="ticker-sep">★</span> $SALAM TO THE MOON <span class="ticker-sep">★</span> 🇮🇱 PEACE IS BULLISH <span class="ticker-sep">★</span> MEME COIN FOR WORLD PEACE <span class="ticker-sep">★</span> SHALOM <span class="ticker-sep">★</span> SALAAM <span class="ticker-sep">★</span> ☮️ FAIR LAUNCH ON PUMP.FUN <span class="ticker-sep">★</span>
+    ☮ SHALOM SALAAM <span class="ticker-sep">✦</span> $SALAM <span class="ticker-sep">✦</span> FAIR LAUNCH ON PUMP.FUN <span class="ticker-sep">✦</span> PEACE IN EVERY LANGUAGE <span class="ticker-sep">✦</span> 🇮🇷 × 🇮🇱 <span class="ticker-sep">✦</span> NO PRESALE <span class="ticker-sep">✦</span> NO TEAM TOKENS <span class="ticker-sep">✦</span> JUST PEACE <span class="ticker-sep">✦</span>
+    ☮ SHALOM SALAAM <span class="ticker-sep">✦</span> $SALAM <span class="ticker-sep">✦</span> FAIR LAUNCH ON PUMP.FUN <span class="ticker-sep">✦</span> PEACE IN EVERY LANGUAGE <span class="ticker-sep">✦</span> 🇮🇷 × 🇮🇱 <span class="ticker-sep">✦</span> NO PRESALE <span class="ticker-sep">✦</span> NO TEAM TOKENS <span class="ticker-sep">✦</span> JUST PEACE <span class="ticker-sep">✦</span>
   </div>
 </div>
+
+<!-- HERO SPLIT -->
 
 <section class="hero">
-  <div class="hero-bg-text">SHALOM</div>
 
-  <div class="title">
-    <span class="bros">Shalom</span>
-    <span class="not">×</span>
-    <span class="bombs">Salaam</span>
+  <!-- LEFT - IRAN -->
+
+  <div class="hero-left">
+    <div class="hero-word hero-word-salaam">سلام</div>
+    <div class="hero-word hero-word-salaam" style="font-size: clamp(22px, 3vw, 48px); opacity:0.7; margin-top:0.3rem;">Salaam</div>
+    <div class="hero-sub hero-sub-left">Arabic · Peace</div>
+    <div class="hero-divider hero-divider-left"></div>
+    <p class="hero-desc hero-desc-left">What 90 million Iranians whisper at the end of every prayer.</p>
   </div>
 
-  <!-- SVG BROS -->
+  <!-- CENTER CHAD -->
 
-  <div class="bros-wrapper">
-    <!-- IRAN BRO -->
-    <div class="bro bro-iran">
-      <span class="flag-badge">🇮🇷</span>
-      <svg class="bro-body" viewBox="0 0 140 265" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Keffiyeh top -->
-        <ellipse cx="70" cy="36" rx="33" ry="34" fill="#1c1c1c"/>
-        <!-- Keffiyeh pattern hint -->
-        <path d="M40 55 Q28 82 34 100 Q40 72 62 74 Z" fill="#2a2a2a"/>
-        <!-- Face -->
-        <ellipse cx="70" cy="42" rx="26" ry="27" fill="#8a6040"/>
-        <!-- Beard -->
-        <ellipse cx="70" cy="62" rx="21" ry="14" fill="#0d0d0d"/>
-        <ellipse cx="70" cy="52" rx="19" ry="11" fill="#8a6040"/>
-        <!-- Eyes -->
-        <ellipse cx="62" cy="39" rx="3" ry="3.5" fill="#111"/>
-        <ellipse cx="78" cy="39" rx="3" ry="3.5" fill="#111"/>
-        <!-- Smile -->
-        <path d="M62 55 Q70 63 78 55" stroke="#c09070" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <!-- Neck -->
-        <rect x="62" y="70" width="16" height="22" rx="4" fill="#8a6040"/>
-        <!-- Body green shirt -->
-        <rect x="36" y="88" width="68" height="82" rx="10" fill="#1d6b30"/>
-        <!-- Iran flag patch on chest -->
-        <rect x="78" y="100" width="20" height="13" rx="2" fill="#239f40"/>
-        <rect x="78" y="103.5" width="20" height="6" fill="white"/>
-        <rect x="78" y="110" width="20" height="3" fill="#da0000"/>
-        <!-- Left arm (toward center) -->
-        <rect x="100" y="90" width="24" height="62" rx="12" fill="#1d6b30"/>
-        <!-- Right arm (out) -->
-        <rect x="14" y="90" width="24" height="62" rx="12" fill="#1d6b30"/>
-        <!-- Hands -->
-        <ellipse cx="26" cy="155" rx="11" ry="9" fill="#8a6040"/>
-        <ellipse cx="112" cy="155" rx="11" ry="9" fill="#8a6040"/>
-        <!-- Pants dark -->
-        <rect x="36" y="167" width="30" height="82" rx="7" fill="#3a2800"/>
-        <rect x="72" y="167" width="30" height="82" rx="7" fill="#2e2000"/>
-        <!-- Shoes -->
-        <ellipse cx="51" cy="249" rx="19" ry="8" fill="#1a1a1a"/>
-        <ellipse cx="87" cy="249" rx="19" ry="8" fill="#1a1a1a"/>
-      </svg>
-    </div>
+  <div class="chad-center">
+    <span class="flag-left">🇮🇷</span>
+    <span class="flag-right">🇮🇱</span>
+    <svg class="chad-svg" viewBox="0 0 280 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Glow base -->
+      <ellipse cx="140" cy="480" rx="80" ry="18" fill="rgba(201,168,76,0.15)"/>
 
 ```
-<div class="handshake-zone">🤝</div>
+  <!-- Keffiyeh -->
+  <ellipse cx="140" cy="72" rx="66" ry="68" fill="#1a1a1a"/>
+  <!-- Keffiyeh pattern -->
+  <path d="M80 110 Q60 155 68 195 Q78 145 122 148 Z" fill="#2a2a2a"/>
+  <path d="M78 108 Q56 158 64 200 Q72 150 118 152 Z" fill="#333" opacity="0.5"/>
+  <!-- Keffiyeh check pattern hint -->
+  <rect x="86" y="78" width="108" height="80" rx="4" fill="url(#keffiyeh)" opacity="0.3"/>
 
-<!-- ISRAEL BRO -->
-<div class="bro bro-israel">
-  <span class="flag-badge">🇮🇱</span>
-  <svg class="bro-body" viewBox="0 0 140 265" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Kippah -->
-    <ellipse cx="70" cy="16" rx="27" ry="13" fill="#111"/>
-    <!-- White/grey hair -->
-    <ellipse cx="70" cy="30" rx="30" ry="20" fill="#d8d0c0"/>
-    <!-- Face older/lighter -->
-    <ellipse cx="70" cy="46" rx="26" ry="27" fill="#c4a07a"/>
-    <!-- White beard -->
-    <ellipse cx="70" cy="65" rx="22" ry="15" fill="#d8d8d8"/>
-    <ellipse cx="70" cy="53" rx="20" ry="13" fill="#c4a07a"/>
-    <!-- Eyes -->
-    <ellipse cx="62" cy="42" rx="3" ry="3" fill="#444"/>
-    <ellipse cx="78" cy="42" rx="3" ry="3" fill="#444"/>
-    <!-- Wrinkles -->
-    <path d="M57 38 Q55 41 57 43" stroke="#a07050" stroke-width="1.2" fill="none"/>
-    <path d="M83 38 Q85 41 83 43" stroke="#a07050" stroke-width="1.2" fill="none"/>
-    <!-- Smile -->
-    <path d="M63 58 Q70 65 77 58" stroke="#9a7050" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <!-- Neck -->
-    <rect x="62" y="74" width="16" height="20" rx="4" fill="#c4a07a"/>
-    <!-- Tallit white shawl -->
-    <rect x="30" y="88" width="80" height="92" rx="6" fill="white" opacity="0.12"/>
-    <!-- Blue shirt -->
-    <rect x="38" y="90" width="64" height="80" rx="10" fill="#0038b8"/>
-    <!-- Tallit blue stripes -->
-    <rect x="30" y="90" width="8" height="90" rx="3" fill="#0038b8" opacity="0.7"/>
-    <rect x="102" y="90" width="8" height="90" rx="3" fill="#0038b8" opacity="0.7"/>
-    <!-- Star of David -->
-    <text x="60" y="130" font-size="18" fill="#f5c518">✡</text>
-    <!-- Right arm toward center -->
-    <rect x="16" y="90" width="24" height="62" rx="12" fill="#0038b8"/>
-    <!-- Left arm out -->
-    <rect x="100" y="90" width="24" height="62" rx="12" fill="#0038b8"/>
-    <!-- Hands -->
-    <ellipse cx="28" cy="155" rx="11" ry="9" fill="#c4a07a"/>
-    <ellipse cx="112" cy="155" rx="11" ry="9" fill="#c4a07a"/>
-    <!-- Pants -->
-    <rect x="38" y="167" width="28" height="82" rx="7" fill="#504030"/>
-    <rect x="72" y="167" width="28" height="82" rx="7" fill="#403020"/>
-    <!-- Shoes -->
-    <ellipse cx="52" cy="249" rx="19" ry="8" fill="#1a1a1a"/>
-    <ellipse cx="86" cy="249" rx="19" ry="8" fill="#1a1a1a"/>
-  </svg>
-</div>
+  <defs>
+    <pattern id="keffiyeh" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="rgba(255,255,255,0.15)"/>
+      <rect x="6" y="6" width="6" height="6" fill="rgba(255,255,255,0.15)"/>
+    </pattern>
+    <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a5c35"/>
+      <stop offset="100%" stop-color="#7a4e2a"/>
+    </linearGradient>
+    <linearGradient id="shirtGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1d7030"/>
+      <stop offset="100%" stop-color="#145222"/>
+    </linearGradient>
+    <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(201,168,76,0.4)"/>
+      <stop offset="100%" stop-color="rgba(201,168,76,0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Face -->
+  <ellipse cx="140" cy="84" rx="52" ry="54" fill="url(#skinGrad)"/>
+
+  <!-- Thick beard -->
+  <ellipse cx="140" cy="122" rx="42" ry="28" fill="#0d0d0d"/>
+  <ellipse cx="140" cy="106" rx="40" ry="22" fill="url(#skinGrad)"/>
+
+  <!-- Eyebrows - thick -->
+  <path d="M116 72 Q130 66 144 70" stroke="#111" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M136 70 Q150 65 164 69" stroke="#111" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- Eyes -->
+  <ellipse cx="125" cy="82" rx="7" ry="8" fill="#0a0a0a"/>
+  <ellipse cx="155" cy="82" rx="7" ry="8" fill="#0a0a0a"/>
+  <ellipse cx="127" cy="80" rx="2" ry="2" fill="white" opacity="0.6"/>
+  <ellipse cx="157" cy="80" rx="2" ry="2" fill="white" opacity="0.6"/>
+
+  <!-- Smile / smirk -->
+  <path d="M126 112 Q140 125 154 112" stroke="#5a3015" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Neck -->
+  <rect x="124" y="138" width="32" height="42" rx="8" fill="url(#skinGrad)"/>
+
+  <!-- Body - green shirt -->
+  <rect x="74" y="176" width="132" height="160" rx="18" fill="url(#shirtGrad)"/>
+
+  <!-- Iran flag patch on chest -->
+  <rect x="158" y="196" width="38" height="24" rx="4" fill="#239f40"/>
+  <rect x="158" y="202" width="38" height="12" fill="white"/>
+  <rect x="158" y="214" width="38" height="6" fill="#c8102e"/>
+
+  <!-- Left arm (big, toward viewer) -->
+  <rect x="26" y="178" width="52" height="120" rx="24" fill="url(#shirtGrad)"/>
+  <!-- Right arm -->
+  <rect x="202" y="178" width="52" height="120" rx="24" fill="#145222"/>
+
+  <!-- Hands -->
+  <ellipse cx="52" cy="306" rx="24" ry="20" fill="url(#skinGrad)"/>
+  <ellipse cx="228" cy="306" rx="24" ry="20" fill="#7a4e2a"/>
+
+  <!-- Thumbs up left hand detail -->
+  <rect x="38" y="286" width="10" height="26" rx="5" fill="#8a5c35"/>
+
+  <!-- Pants -->
+  <rect x="78" y="332" width="56" height="160" rx="12" fill="#2a1f00"/>
+  <rect x="142" y="332" width="56" height="160" rx="12" fill="#221800"/>
+
+  <!-- Shoes -->
+  <ellipse cx="106" cy="492" rx="38" ry="16" fill="#111"/>
+  <ellipse cx="170" cy="492" rx="38" ry="16" fill="#0a0a0a"/>
+
+  <!-- Gold chain / necklace -->
+  <path d="M124 155 Q140 165 156 155" stroke="#c9a84c" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <circle cx="140" cy="168" r="6" fill="#c9a84c" opacity="0.9"/>
+
+  <!-- Aura / glow behind -->
+  <ellipse cx="140" cy="200" rx="120" ry="150" fill="url(#goldGlow)" opacity="0.3"/>
+</svg>
 ```
 
   </div>
 
-  <div class="token-badge">$SALAM — Shalom Salaam</div>
-  <p class="tagline">Peace in Hebrew. Peace in Arabic. <em>One coin.</em></p>
-  <div class="cta-group">
-    <a href="https://join.pump.fun/HSag/nqbxzf4k" target="_blank" class="btn btn-gold">🚀 Buy $SALAM</a>
-    <a href="#buy" class="btn btn-outline">📊 How to Buy</a>
+  <!-- RIGHT - ISRAEL -->
+
+  <div class="hero-right">
+    <div class="hero-word hero-word-shalom">שָׁלוֹם</div>
+    <div class="hero-word hero-word-shalom" style="font-size: clamp(22px, 3vw, 48px); opacity:0.7; margin-top:0.3rem;">Shalom</div>
+    <div class="hero-sub hero-sub-right">Hebrew · Peace</div>
+    <div class="hero-divider hero-divider-right"></div>
+    <p class="hero-desc hero-desc-right">What 9 million Israelis whisper at the end of every prayer.</p>
   </div>
+
 </section>
+
+<div class="gold-bar"></div>
 
 <!-- STORY -->
 
-<div style="background:#111; padding: clamp(4rem, 8vw, 7rem) 1.5rem;">
-  <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-    <span style="font-family:'Bebas Neue',sans-serif; font-size:0.75rem; letter-spacing:0.4em; color:var(--gold); text-transform:uppercase; display:block; margin-bottom:1.5rem;">The Story</span>
-    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(38px,7vw,72px); line-height:1; margin-bottom:2rem;">Two words.<br>One meaning.</h2>
-    <p style="font-size:1.15rem; line-height:1.9; color:rgba(255,255,255,0.7); margin-bottom:1.5rem;">
-      Shalom. Salaam. Different languages, same word — <em style="color:white; font-style:normal;">peace</em>.
+<section class="story">
+  <span class="story-label reveal">The Story</span>
+  <h2 class="reveal">Two words.<br>One meaning.<br>One coin.</h2>
+  <div class="story-body">
+    <p class="reveal">
+      Shalom. Salaam. Different languages, different peoples — <strong>same word</strong>. Both mean peace. Both mean wholeness. Both mean the world you want to live in.
     </p>
-    <p style="font-size:1.15rem; line-height:1.9; color:rgba(255,255,255,0.7); margin-bottom:1.5rem;">
-      While governments argue, people on both sides just want to live their lives. Raise their kids. Share a meal. The ordinary people of Iran and Israel have more in common than the headlines ever show.
+    <p class="reveal">
+      While the news shows conflict, <em>ordinary people on both sides just want to live their lives</em>. Raise their kids. Share a meal. The Iranian and Israeli people have more in common than any headline will ever show.
     </p>
-    <p style="font-size:1.15rem; line-height:1.9; color:rgba(255,255,255,0.7);">
-      This coin isn't about politics. It's a bet that peace is possible — and that sometimes the most powerful statement is a simple one.
+    <p class="reveal">
+      This isn't a political statement. It's a human one. A fair launch for everyone who believes peace is possible — no presale, no insiders, no BS. Just a coin and a message.
     </p>
   </div>
-</div>
 
-<!-- SPLIT -->
+  <!-- MEANING CARDS -->
 
-<div style="display:grid; grid-template-columns:1fr 1fr; max-width:1100px; margin: 0 auto; border: 3px solid var(--gold); border-radius:20px; overflow:hidden; box-shadow: -8px 0 40px rgba(35,159,64,0.3), 8px 0 40px rgba(0,56,184,0.3);">
-  <div class="split-side split-iran">
-    <span class="flag">🇮🇷</span>
-    <h3>Salaam</h3>
-    <p>Peace in Arabic. What 90 million Iranians wish for every day.</p>
+  <div class="meaning reveal" style="margin-top: 5rem;">
+    <div class="meaning-card meaning-iran">
+      <span class="flag-big">🇮🇷</span>
+      <h3>Salaam</h3>
+      <span class="word-meaning">سلام · Arabic & Farsi</span>
+      <p>Rooted in the Semitic word for peace, safety, and completeness. The same root as Islam — a word that means submission to peace.</p>
+    </div>
+    <div class="meaning-card meaning-israel">
+      <span class="flag-big">🇮🇱</span>
+      <h3>Shalom</h3>
+      <span class="word-meaning">שָׁלוֹם · Hebrew</span>
+      <p>Rooted in the Hebrew word for wholeness and harmony. Also the root of Jerusalem — a city whose name literally means "city of peace."</p>
+    </div>
   </div>
-  <div class="split-side split-israel">
-    <span class="flag">🇮🇱</span>
-    <h3>Shalom</h3>
-    <p>Peace in Hebrew. What 9 million Israelis wish for every day.</p>
-  </div>
-</div>
+</section>
+
+<div class="gold-bar"></div>
 
 <!-- BUY -->
 
-<div style="background:#0a0a0a;">
-<div id="buy" class="section" style="padding-top:3rem; text-align:center;">
-  <span class="section-label">Fair Launch on pump.fun</span>
-  <h2>Get $SALAM</h2>
-  <p style="color:rgba(255,255,255,0.5); margin-bottom:2rem; font-size:1rem;">No presale. No team allocation. No BS. Just a fair launch.</p>
-  <div class="contract-label">Contract Address — Click to Copy</div>
-  <div class="contract-box" onclick="copyContract(this)" id="ca-box">
-    5e9YTSXwBL4PQgxF9ikQrUWKfGriAeYsspo1n7Uipump
-    <div style="font-size:0.65rem; margin-top:0.4rem; opacity:0.5; font-family:'Nunito',sans-serif;">Click to copy</div>
-  </div>
-  <a href="https://join.pump.fun/HSag/nqbxzf4k" target="_blank" class="btn btn-gold" style="font-size:1.2rem; padding: 1rem 3rem; box-shadow: 0 0 50px rgba(245,197,24,0.6);">🚀 Buy on pump.fun</a>
-</div>
-</div>
+<section class="buy-section">
+  <span class="buy-label reveal">Fair Launch · pump.fun</span>
+  <h2 class="reveal">Get $SALAM</h2>
+  <p class="fair-note reveal">No presale. No team allocation. No insiders. Just peace.</p>
 
-<!-- COMMUNITY -->
-
-<div class="community">
-  <h2 style="font-size:clamp(36px,7vw,80px);margin-bottom:1rem;">Shalom. Salaam. ☮️</h2>
-  <p style="color:rgba(255,255,255,0.5);max-width:400px;margin:0 auto 2.5rem;line-height:1.7;font-size:1.05rem;">Peace in every language. One coin for all of us.</p>
-  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-    <a href="https://join.pump.fun/HSag/nqbxzf4k" target="_blank" class="btn btn-gold">🚀 Buy on pump.fun</a>
-    <a href="https://join.pump.fun/HSag/nqbxzf4k" target="_blank" class="btn btn-outline">📈 Chart</a>
+  <div class="ca-box reveal" onclick="copyCA(this)">
+    <div class="ca-label">Contract Address — Click to Copy</div>
+    <div class="ca-address">5e9YTSXwBL4PQgxF9ikQrUWKfGriAeYsspo1n7Uipump</div>
+    <div class="ca-hint" id="ca-hint">click to copy ✦</div>
   </div>
-</div>
+
+  <a href="https://join.pump.fun/HSag/nqbxzf4k" target="_blank" class="buy-btn reveal">
+    ☮ Buy $SALAM on pump.fun
+  </a>
+</section>
+
+<!-- FOOTER -->
 
 <footer>
-  <span class="logo-foot">Shalom Salaam ☮️</span>
-  <p>$SALAM is a meme coin. For entertainment purposes only. Always DYOR.</p>
-  <p style="margin-top:1rem;color:rgba(255,255,255,0.15);">🇮🇷 × 🇮🇱</p>
+  <span class="footer-flags">🇮🇷 ☮️ 🇮🇱</span>
+  <span class="footer-logo">Shalom Salaam</span>
+  <p>$SALAM is a meme coin with no intrinsic value or expectation of financial return.</p>
+  <p>For entertainment purposes only. Always DYOR. Not financial advice.</p>
 </footer>
 
 <script>
-  function copyContract(el) {
-    navigator.clipboard.writeText('5e9YTSXwBL4PQgxF9ikQrUWKfGriAeYsspo1n7Uipump').catch(() => {});
-    el.style.background = 'rgba(245,197,24,0.25)';
-    const sub = el.querySelector('div');
-    const orig = sub.textContent;
-    sub.textContent = '✅ Copied to clipboard!';
-    setTimeout(() => { el.style.background = ''; sub.textContent = orig; }, 1500);
-  }
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) t.scrollIntoView({ behavior: 'smooth' });
-    });
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX - 6 + 'px';
+    cursor.style.top = e.clientY - 6 + 'px';
   });
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) { e.target.style.animation = `fadeUp 0.6s ease ${i * 0.1}s both`; observer.unobserve(e.target); }
+  document.addEventListener('mousedown', () => cursor.style.transform = 'scale(2)');
+  document.addEventListener('mouseup', () => cursor.style.transform = 'scale(1)');
+
+  // Copy CA
+  function copyCA(el) {
+    navigator.clipboard.writeText('5e9YTSXwBL4PQgxF9ikQrUWKfGriAeYsspo1n7Uipump').catch(() => {});
+    const hint = document.getElementById('ca-hint');
+    hint.textContent = '✅ Copied!';
+    el.style.borderColor = 'rgba(201,168,76,0.7)';
+    setTimeout(() => {
+      hint.textContent = 'click to copy ✦';
+      el.style.borderColor = '';
+    }, 2000);
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
     });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.token-card, .buy-step').forEach(el => observer.observe(el));
+  reveals.forEach(r => obs.observe(r));
 </script>
 
 </body>
